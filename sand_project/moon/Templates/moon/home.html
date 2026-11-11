@@ -1,0 +1,29 @@
+{% extends 'moon/base.html' %}
+{% block title %}My Notes{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="text-dark">My Notes</h1>
+  <a href="{% url 'add_note' %}" class="btn btn-success">+ Add Note</a>
+</div>
+{% if notes %}
+<div class="row">
+  {% for note in notes %}
+  <div class="col-md-6 col-lg-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ note.title }}</h5>
+        <p class="card-text">{{ note.content|truncatewords:30 }}</p>
+        <small class="text-muted">{{ note.created_at|date:"M d, Y" }}</small>
+      </div>
+      <div class="card-footer bg-transparent border-0">
+        <a href="{% url 'edit_note' note.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+        <a href="{% url 'delete_note' note.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">No notes yet. Create your first one!</div>
+{% endif %}
+{% endblock %}

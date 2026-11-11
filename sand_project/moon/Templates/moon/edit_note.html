@@ -1,0 +1,21 @@
+{% extends 'moon/base.html' %}
+{% block title %}Edit Note{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Edit Note</h4>
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary w-100">Update Note</button>
+        </form>
+        <a href="{% url 'home' %}" class="btn btn-link mt-3">Back to notes</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
