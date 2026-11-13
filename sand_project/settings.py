@@ -135,6 +135,9 @@ MAILERS = {
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 LOGIN_URL = 'login'
+
+# Add this at the very bottom of settings.py
+THIS_WILL_CRASH_IF_YOU_PUSHED_THE_CODE = True
