@@ -7,14 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ==============================================
 # SECURITY
 # ==============================================
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# Make sure you have SECRET_KEY set in Render Environment Variables!
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-fallback-key-for-testing")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = [
-    ".onrender.com",
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = ["*"]
 
 # ==============================================
 # APPLICATIONS
@@ -26,7 +23,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "moon",  # <-- Your app
+    "moon",
 ]
 
 # ==============================================
@@ -96,7 +93,9 @@ USE_TZ = True
 # ==============================================
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Use CompressedStaticFilesStorage instead of Manifest to prevent 500 errors on missing CSS files
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # ==============================================
 # DEFAULT PK
@@ -104,16 +103,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ==============================================
-# PRODUCTION SECURITY
+# AUTH REDIRECTS
 # ==============================================
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = not DEBUG
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = "DENY"
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-
 LOGIN_URL = 'login'
