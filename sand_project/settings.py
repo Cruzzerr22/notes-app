@@ -57,8 +57,8 @@ ROOT_URLCONF = 'sand_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [], # Leave this empty
+        'APP_DIRS': True, # THIS MUST BE TRUE
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
@@ -68,7 +68,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'sand_project.wsgi.application'
 
 
