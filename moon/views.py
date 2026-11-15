@@ -9,7 +9,7 @@ from moon.forms import NoteForm
 @login_required
 def home(request):
     notes = Note.objects.filter(user=request.user).order_by('-created_at')
-    return render(request, 'moon/home.html', {'notes': notes})
+    return render(request, 'home.html', {'notes': notes})
 
 
 @login_required
@@ -20,7 +20,7 @@ def add_note(request):
         note.user = request.user
         note.save()
         return redirect('home')
-    return render(request, 'moon/add_note.html', {'form': form})
+    return render(request, 'add_note.html', {'form': form})
 
 
 @login_required
@@ -30,7 +30,7 @@ def edit_note(request, pk):
     if form.is_valid():
         form.save()
         return redirect('home')
-    return render(request, 'moon/edit_note.html', {'form': form})
+    return render(request, 'edit_note.html', {'form': form})
 
 
 @login_required
@@ -39,7 +39,7 @@ def delete_note(request, pk):
     if request.method == 'POST':
         note.delete()
         return redirect('home')
-    return render(request, 'moon/delete_note.html', {'note': note})
+    return render(request, 'delete_note.html', {'note': note})
 
 
 def register(request):
@@ -48,4 +48,4 @@ def register(request):
         user = form.save()
         login(request, user)
         return redirect('home')
-    return render(request, 'moon/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
