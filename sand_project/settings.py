@@ -45,7 +45,7 @@ ROOT_URLCONF = "sand_project.urls"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'moon' / 'templates' / 'moon'],   # <-- Direct path
+        'DIRS': [BASE_DIR / 'moon' / 'Templates' / 'moon'],   # <-- Direct path
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
