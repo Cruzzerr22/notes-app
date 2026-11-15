@@ -45,8 +45,8 @@ ROOT_URLCONF = "sand_project.urls"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'moon' / 'templates' / 'moon'],  # <-- Exact path to HTML files
-        'APP_DIRS': False,                                   # <-- Turn this OFF
+        'DIRS': [BASE_DIR / 'moon' / 'templates'],  # <-- No trailing 'moon'
+        'APP_DIRS': False,                          # <-- Must be False
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
