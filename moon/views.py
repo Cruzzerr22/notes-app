@@ -49,3 +49,9 @@ def register(request):
         login(request, user)
         return redirect('home')
     return render(request, 'register.html', {'form': form})
+
+from django.contrib.auth import logout as auth_logout
+
+def logout_view(request):
+    auth_logout(request)
+    return redirect('login')
